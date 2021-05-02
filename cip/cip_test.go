@@ -11,13 +11,13 @@ import (
 func TestGetIPv4(t *testing.T) {
 	ip := MyIPv4()
 	log.Println(ip)
-	assert.True(t, regexp.MustCompile(regxIPv4).MatchString(ip) || len(ip) == 0)
+	assert.True(t, regexp.MustCompile(RegxIPv4).MatchString(ip) || len(ip) == 0)
 }
 
 func TestGetIPv6(t *testing.T) {
 	ip := MyIPv6()
 	log.Println(ip)
-	assert.True(t, regexp.MustCompile(regxIPv6).MatchString(ip) || len(ip) == 0)
+	assert.True(t, regexp.MustCompile(RegxIPv6).MatchString(ip) || len(ip) == 0)
 }
 
 func TestGetDNSv4(t *testing.T) {
