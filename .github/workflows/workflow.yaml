@@ -1,0 +1,33 @@
+name: test golibs
+
+on: push
+
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+    env:
+      GO111MODULE: "on"
+    strategy:
+      matrix:
+        os:
+          - windows-latest
+          - macos-latest
+          - ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - uses: actions/setup-go@v2
+        with:
+          go-version: 1.14.x
+
+      - name: tests
+        run: |-
+          go test -race -v -bench="." -coverprofile="coverage.txt" -covermode=atomic ./...
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v1
+        if: "success() && matrix.os == 'ubuntu-latest'"
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.txt
