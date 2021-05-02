@@ -57,10 +57,13 @@ func reslove(domain string, qtype uint16) (ip string) {
 		go func(resolver *resolvers.Resolver) {
 			resp, err := (*resolver).Lookup(dns.Question{Name: domain, Qtype: qtype})
 			if err == nil && len(resp.Answers) > 0 {
-				cchan <- resp.Answers[0].Address
-			} else {
-				cchan <- "" // SOA
+				for idx := range resp.Answers {
+					if resp.Answers[idx].Type == dns.TypeToString[qtype] {
+						cchan <- resp.Answers[idx].Address
+					}
+				}
 			}
+			cchan <- "" // SOA
 		}(&mResolvers[i])
 	}
 
