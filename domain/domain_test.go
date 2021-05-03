@@ -82,7 +82,7 @@ func TestIsValidHostname(t *testing.T) {
 }
 
 func TestSorted(t *testing.T) {
-	list := []string{"www.qq.com", "qq.com", "google.com", "google.com.hk", "www.google.com", "web.dev", "nasa.gov", "im.tv", "b23.tv"}
+	list := []string{"www.qq.com", "qq.com", "google.com", "google.com.hk", "www.google.com", "web.dev", "nasa.gov", "im.tv", "b23.tv", "qq.com"}
 	golden := []string{"google.com.hk", "google.com", "qq.com", "web.dev", "nasa.gov", "b23.tv", "im.tv"}
 
 	assert.Equal(t, Sort(list), golden)

@@ -2,6 +2,7 @@ package domain
 
 import (
 	"index/suffixarray"
+	"reflect"
 	"sort"
 	"strings"
 )
@@ -15,9 +16,16 @@ func reverseString(s string) string {
 }
 
 func Sort(domains ...[]string) (sorted []string) {
-	all := []string{}
+	keys := map[string]bool{}
 	for i := range domains {
-		all = append(all, domains[i]...)
+		for j := range domains[i] {
+			keys[domains[i][j]] = true
+		}
+	}
+
+	all := make([]string, len(keys))
+	for k, v := range reflect.ValueOf(keys).MapKeys() {
+		all[k] = v.String()
 	}
 
 	coredomains := []string{}
