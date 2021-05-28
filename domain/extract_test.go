@@ -7,7 +7,668 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestExtract(t *testing.T) {
+func TestExtractList(t *testing.T) {
+	// https://github.com/v2fly/domain-list-community/blob/master/data/google
+	list := `
+# List of all domains being operated by Google Inc.
+include:android
+include:blogspot
+include:dart
+include:fastlane
+include:flutter
+include:golang
+include:google-ads
+include:google-registry
+include:google-scholar
+include:polymer
+include:v8
+include:youtube
+
+# All .and domains
+and
+
+# All .chrome domains
+chrome
+
+# All .dclk domains
+dclk
+
+# All .gbiz domains
+gbiz
+
+# All .gle domains
+gle
+
+# All .gmail domains
+gmail
+
+# All .goo domains
+goo
+
+# All .goog domains
+goog
+
+# All .google domains
+google
+
+# All .guge domains
+guge
+
+# All .hangout domains
+hangout
+
+# All .nexus domains
+nexus
+
+# All .グーグル domains
+xn--qcka1pmc
+
+# Source: https://www.google.com/supported_domains
+google.ad
+google.ae
+google.al
+google.am
+google.as
+google.at
+google.az
+google.ba
+google.be
+google.bf
+google.bg
+google.bi
+google.bj
+google.bs
+google.bt
+google.by
+google.ca
+google.cat
+google.cd
+google.cf
+google.cg
+google.ch
+google.ci
+google.cl
+google.cm
+google.cn @cn
+google.co.ao
+google.co.bw
+google.co.ck
+google.co.cr
+google.co.id
+google.co.il
+google.co.in
+google.co.jp
+google.co.ke
+google.co.kr
+google.co.ls
+google.co.ma
+google.co.mz
+google.co.nz
+google.co.th
+google.co.tz
+google.co.ug
+google.co.uk
+google.co.uz
+google.co.ve
+google.co.vi
+google.co.za
+google.co.zm
+google.co.zw
+google.com
+google.com.af
+google.com.ag
+google.com.ai
+google.com.ar
+google.com.au
+google.com.bd
+google.com.bh
+google.com.bn
+google.com.bo
+google.com.br
+google.com.bz
+google.com.co
+google.com.cu
+google.com.cy
+google.com.do
+google.com.ec
+google.com.eg
+google.com.et
+google.com.fj
+google.com.gh
+google.com.gi
+google.com.gt
+google.com.hk
+google.com.jm
+google.com.kh
+google.com.kw
+google.com.lb
+google.com.ly
+google.com.mm
+google.com.mt
+google.com.mx
+google.com.my
+google.com.na
+google.com.ng
+google.com.ni
+google.com.np
+google.com.om
+google.com.pa
+google.com.pe
+google.com.pg
+google.com.ph
+google.com.pk
+google.com.pr
+google.com.py
+google.com.qa
+google.com.sa
+google.com.sb
+google.com.sg
+google.com.sl
+google.com.sv
+google.com.tj
+google.com.tr
+google.com.tw
+google.com.ua
+google.com.uy
+google.com.vc
+google.com.vn
+google.cv
+google.cz
+google.de
+google.dj
+google.dk
+google.dm
+google.dz
+google.ee
+google.es
+google.fi
+google.fm
+google.fr
+google.ga
+google.ge
+google.gg
+google.gl
+google.gm
+google.gr
+google.gy
+google.hn
+google.hr
+google.ht
+google.hu
+google.ie
+google.im
+google.iq
+google.is
+google.it
+google.je
+google.jo
+google.kg
+google.ki
+google.kz
+google.la
+google.li
+google.lk
+google.lt
+google.lu
+google.lv
+google.md
+google.me
+google.mg
+google.mk
+google.ml
+google.mn
+google.ms
+google.mu
+google.mv
+google.mw
+google.ne
+google.nl
+google.no
+google.nr
+google.nu
+google.pl
+google.pn
+google.ps
+google.pt
+google.ro
+google.rs
+google.ru
+google.rw
+google.sc
+google.se
+google.sh
+google.si
+google.sk
+google.sm
+google.sn
+google.so
+google.sr
+google.st
+google.td
+google.tg
+google.tl
+google.tm
+google.tn
+google.to
+google.tt
+google.vg
+google.vu
+google.ws
+
+# Others
+0emm.com
+1e100.net
+1ucrs.com
+466453.com
+abc.xyz
+adgoogle.net
+admeld.com
+angulardart.org
+api.ai
+apigee.com
+appbridge.ca
+appbridge.io
+appbridge.it
+appspot.com
+apture.com
+area120.com
+asp-cc.com
+autodraw.com
+bandpage.com
+baselinestudy.com
+baselinestudy.org
+bazel.build
+bdn.dev
+beatthatquote.com
+blink.org
+blogblog.com
+blogger.com
+brocaproject.com
+brotli.org
+bumpshare.com
+bumptop.ca
+bumptop.com
+bumptop.net
+bumptop.org
+bumptunes.com
+campuslondon.com
+certificate-transparency.org
+chrome.com
+chromebook.com
+chromecast.com
+chromeos.dev
+chromium.org
+chronicle.security
+chroniclesec.com
+cloudburstresearch.com
+cloudfunctions.net
+cloudrobotics.com
+cobrasearch.com
+codespot.com
+conscrypt.com
+conscrypt.org
+cookiechoices.org
+coova.com
+coova.net
+coova.org
+crossmediapanel.com
+crr.com
+cs4hs.com
+dartsearch.net
+dataliberation.org
+debug.com
+debugproject.com
+deepmind.com
+devsitetest.how
+dialogflow.com
+digitalassetlinks.org
+episodic.com
+feedburner.com
+fflick.com
+financeleadsonline.com
+firebaseapp.com
+firebaseio.com
+foofle.com
+froogle.com
+fuchsia.dev
+g-tun.com
+g.cn @cn
+g.co
+g.dev
+g.page
+gateway.dev
+gcr.io
+gerritcodereview.com
+getbumptop.com
+ggoogle.com
+gipscorp.com
+gkecnapps.cn @cn
+globaledu.org
+gmail.com
+gmodules.com
+gogle.com
+gogole.com
+gonglchuangl.net
+goo.gl
+googel.com
+googil.com
+googl.com
+google-syndication.com
+google.berlin
+google.dev
+google.net
+google.org
+google.ventures
+googleacquisitionmigration.com
+googleapis.cn @cn
+googleapis.com
+googleapps.com
+googlearth.com
+googleblog.com
+googlebot.com
+googlecapital.com
+googlecert.net
+googlecnapps.cn @cn
+googlecode.com
+googlecommerce.com
+googlecompare.co.uk
+googledanmark.com
+googledomains.com
+googledrive.com
+googlee.com
+googleearth.com
+googlefiber.net
+googlefinland.com
+googlemail.com
+googlemaps.com
+googlepagecreator.com
+googlephotos.com
+googleplay.com
+googleplus.com
+googlesource.com
+googlestore.com
+googlesverige.com
+googleusercontent.com
+googleventures.com
+googlr.com
+goolge.com
+gooogle.com
+gridaware.app
+gsrc.io
+gstatic.cn @cn
+gstatic.com
+gstaticcnapps.cn @cn
+gsuite.com
+gv.com
+gvt0.com
+gvt1.com
+gvt2.com
+gvt3.com
+gvt5.com
+gvt6.com
+gvt7.com
+gvt9.com
+hdrplusdata.org
+hindiweb.com
+howtogetmo.co.uk
+html5rocks.com
+hwgo.com
+iamremarkable.org
+igoogle.com
+impermium.com
+j2objc.org
+jibemobile.com
+keyhole.com
+keytransparency.com
+keytransparency.foo
+keytransparency.org
+lanternal.com
+like.com
+madewithcode.com
+material.io
+mdialog.com
+meet.new
+mfg-inspector.com
+mobileview.page
+moodstocks.com
+near.by
+nest.com
+nomulus.foo
+oauthz.com
+on.here
+on2.com
+onefifteen.net
+onefifteen.org
+oneworldmanystories.com
+openthread.io
+openweave.io
+orbitera.com
+page.link
+pagespeedmobilizer.com
+pageview.mobi
+panoramio.com
+partylikeits1986.org
+paxlicense.org
+picasa.com
+picasaweb.com
+picasaweb.net
+picasaweb.org
+picnik.com
+pittpatt.com
+pixate.com
+postini.com
+privacysandbox.com
+projectara.com
+projectbaseline.com
+publishproxy.com
+questvisual.com
+quickoffice.com
+quiksee.com
+revolv.com
+ridepenguin.com
+run.app
+savethedate.foo
+saynow.com
+schemer.com
+screenwisetrends.com
+screenwisetrendspanel.com
+snapseed.com
+solveforx.com
+stadia.dev
+stcroixmosquito.com
+stcroixmosquitoproject.com
+studywatchbyverily.com
+studywatchbyverily.org
+stxmosquito.com
+stxmosquitoproject.com
+stxmosquitoproject.net
+stxmosquitoproject.org
+synergyse.com
+tensorflow.org
+tfhub.dev
+thecleversense.com
+thegooglestore.com
+thinkquarterly.co.uk
+thinkquarterly.com
+thinkwithgoogle.com
+tiltbrush.com
+txcloud.net
+txvia.com
+unfiltered.news
+useplannr.com
+usvimosquito.com
+usvimosquitoproject.com
+velostrata.com
+verily.com
+verilylifesciences.com
+verilystudyhub.com
+verilystudywatch.com
+verilystudywatch.org
+wallet.com
+waymo.com
+waze.com
+web.app
+web.dev
+webappfieldguide.com
+webmproject.org
+webpkgcache.com
+webrtc.org
+weltweitwachsen.de
+whatbrowser.org
+widevine.com
+withgoogle.com
+womenwill.com
+womenwill.com.br
+womenwill.id
+womenwill.in
+womenwill.mx
+x.company
+x.team
+xn--9kr7l.com       # 古博.com
+xn--9trs65b.com     # 咕果.com
+xn--flw351e.com     # 谷歌.com
+xn--ggle-55da.com   # gооgle.com
+xn--gogl-0nd52e.com # gοoglе.com
+xn--gogl-1nd42e.com # goοglе.com
+xn--ngstr-lra8j.com # google play 应用下载时涉及
+xplr.co
+zukunftswerkstatt.de
+
+# Domains and services below are available in China mainland
+# Use in config file like this: "geosite:google@cn"
+full:csi-china.l.google.com @cn
+full:gstaticadssl.l.google.com @cn
+full:www.recaptcha.net @cn
+
+# The rules below are from https://github.com/felixonmars/dnsmasq-china-list/blob/master/google.china.conf
+# Revision: ac37eb94995cb57cdff71100354c80508bd76080
+# Use in config file like this: "geosite:google@cn"
+full:265.com @cn
+full:2mdn.net @cn
+full:adservice.google.com @cn
+full:app-measurement.com @cn
+full:beacons.gcp.gvt2.com @cn
+full:beacons.gvt2.com @cn
+full:beacons3.gvt2.com @cn
+full:c.admob.com @cn
+full:c.android.clients.google.com @cn
+full:cache.pack.google.com @cn
+full:checkin.gstatic.com @cn
+full:clickserve.dartsearch.net @cn
+full:clientservices.googleapis.com @cn
+full:connectivitycheck.gstatic.com @cn
+full:corp.google.com @cn
+full:crl.pki.goog @cn
+full:csi.gstatic.com @cn
+full:dl.google.com @cn
+full:dl.l.google.com @cn
+full:doubleclick.net @cn
+full:firebase-settings.crashlytics.com @cn
+full:fonts.googleapis.com @cn
+full:fonts.gstatic.com @cn
+full:google-analytics.com @cn
+full:googleadservices.com @cn
+full:googleanalytics.com @cn
+full:googlesyndication.com @cn
+full:googletagmanager.com @cn
+full:googletagservices.com @cn
+full:gtm.oasisfeng.com @cn
+full:imasdk.googleapis.com @cn
+full:ocsp.pki.goog @cn
+full:pagead-googlehosted.l.google.com @cn
+full:pki-goog.l.google.com @cn
+full:recaptcha.net @cn
+full:redirector.gvt1.com @cn
+full:regioninfo-pa.googleapis.com @cn
+full:safebrowsing-cache.google.com @cn
+full:safebrowsing.googleapis.com @cn
+full:settings.crashlytics.com @cn
+full:ssl-google-analytics.l.google.com @cn
+full:ssl.gstatic.com @cn
+full:toolbarqueries.google.com @cn
+full:tools.google.com @cn
+full:tools.l.google.com @cn
+full:translate.googleapis.com @cn
+full:update.googleapis.com @cn
+full:www-googletagmanager.l.google.com @cn
+full:www.gstatic.com @cn
+	`
+	golden := []string{
+		"0emm.com", "1e100.net", "1ucrs.com", "265.com", "2mdn.net", "466453.com", "abc.xyz", "adgoogle.net", "admeld.com",
+		"adservice.google.com", "angulardart.org", "api.ai", "apigee.com", "app-measurement.com", "appbridge.ca", "appbridge.io",
+		"appbridge.it", "appspot.com", "apture.com", "area120.com", "asp-cc.com", "autodraw.com", "bandpage.com", "baselinestudy.com",
+		"baselinestudy.org", "bazel.build", "bdn.dev", "beacons.gcp.gvt2.com", "beacons.gvt2.com", "beacons3.gvt2.com", "beatthatquote.com",
+		"blink.org", "blogblog.com", "blogger.com", "brocaproject.com", "brotli.org", "bumpshare.com", "bumptop.ca", "bumptop.com", "bumptop.net",
+		"bumptop.org", "bumptunes.com", "c.admob.com", "c.android.clients.google.com", "cache.pack.google.com", "campuslondon.com",
+		"certificate-transparency.org", "checkin.gstatic.com", "chrome.com", "chromebook.com", "chromecast.com", "chromeos.dev",
+		"chromium.org", "chronicle.security", "chroniclesec.com", "clickserve.dartsearch.net", "clientservices.googleapis.com",
+		"cloudburstresearch.com", "cloudfunctions.net", "cloudrobotics.com", "cobrasearch.com", "codespot.com", "connectivitycheck.gstatic.com",
+		"conscrypt.com", "conscrypt.org", "cookiechoices.org", "coova.com", "coova.net", "coova.org", "corp.google.com", "crl.pki.goog",
+		"crossmediapanel.com", "crr.com", "cs4hs.com", "csi-china.l.google.com", "csi.gstatic.com", "dartsearch.net", "dataliberation.org", "debug.com",
+		"debugproject.com", "deepmind.com", "devsitetest.how", "dialogflow.com", "digitalassetlinks.org", "dl.google.com", "dl.l.google.com",
+		"doubleclick.net", "episodic.com", "feedburner.com", "fflick.com", "financeleadsonline.com", "firebase-settings.crashlytics.com",
+		"firebaseapp.com", "firebaseio.com", "fonts.googleapis.com", "fonts.gstatic.com", "foofle.com", "froogle.com", "fuchsia.dev", "g-tun.com",
+		"g.cn", "g.co", "g.dev", "g.page", "gateway.dev", "gcr.io", "gerritcodereview.com", "getbumptop.com", "ggoogle.com", "gipscorp.com",
+		"gkecnapps.cn", "globaledu.org", "gmail.com", "gmodules.com", "gogle.com", "gogole.com", "gonglchuangl.net", "goo.gl", "googel.com",
+		"googil.com", "googl.com", "google-analytics.com", "google-syndication.com", "google.ad", "google.ae", "google.al", "google.am",
+		"google.as", "google.at", "google.az", "google.ba", "google.be", "google.berlin", "google.bf", "google.bg", "google.bi", "google.bj", "google.bs",
+		"google.bt", "google.by", "google.ca", "google.cat", "google.cd", "google.cf", "google.cg", "google.ch", "google.ci", "google.cl", "google.cm",
+		"google.cn", "google.co.ao", "google.co.bw", "google.co.ck", "google.co.cr", "google.co.id", "google.co.il", "google.co.in", "google.co.jp",
+		"google.co.ke", "google.co.kr", "google.co.ls", "google.co.ma", "google.co.mz", "google.co.nz", "google.co.th", "google.co.tz", "google.co.ug",
+		"google.co.uk", "google.co.uz", "google.co.ve", "google.co.vi", "google.co.za", "google.co.zm", "google.co.zw", "google.com", "google.com.af",
+		"google.com.ag", "google.com.ai", "google.com.ar", "google.com.au", "google.com.bd", "google.com.bh", "google.com.bn", "google.com.bo",
+		"google.com.br", "google.com.bz", "google.com.co", "google.com.cu", "google.com.cy", "google.com.do", "google.com.ec", "google.com.eg",
+		"google.com.et", "google.com.fj", "google.com.gh", "google.com.gi", "google.com.gt", "google.com.hk", "google.com.jm", "google.com.kh",
+		"google.com.kw", "google.com.lb", "google.com.ly", "google.com.mm", "google.com.mt", "google.com.mx", "google.com.my", "google.com.na",
+		"google.com.ng", "google.com.ni", "google.com.np", "google.com.om", "google.com.pa", "google.com.pe", "google.com.pg", "google.com.ph",
+		"google.com.pk", "google.com.pr", "google.com.py", "google.com.qa", "google.com.sa", "google.com.sb", "google.com.sg", "google.com.sl",
+		"google.com.sv", "google.com.tj", "google.com.tr", "google.com.tw", "google.com.ua", "google.com.uy", "google.com.vc", "google.com.vn",
+		"google.cv", "google.cz", "google.de", "google.dev", "google.dj", "google.dk", "google.dm", "google.dz", "google.ee", "google.es", "google.fi",
+		"google.fm", "google.fr", "google.ga", "google.ge", "google.gg", "google.gl", "google.gm", "google.gr", "google.gy", "google.hn",
+		"google.hr", "google.ht", "google.hu", "google.ie", "google.im", "google.iq", "google.is", "google.it", "google.je", "google.jo",
+		"google.kg", "google.ki", "google.kz", "google.la", "google.li", "google.lk", "google.lt", "google.lu", "google.lv", "google.md",
+		"google.me", "google.mg", "google.mk", "google.ml", "google.mn", "google.ms", "google.mu", "google.mv", "google.mw", "google.ne",
+		"google.net", "google.nl", "google.no", "google.nr", "google.nu", "google.org", "google.pl", "google.pn", "google.ps", "google.pt",
+		"google.ro", "google.rs", "google.ru", "google.rw", "google.sc", "google.se", "google.sh", "google.si", "google.sk", "google.sm",
+		"google.sn", "google.so", "google.sr", "google.st", "google.td", "google.tg", "google.tl", "google.tm", "google.tn", "google.to",
+		"google.tt", "google.ventures", "google.vg", "google.vu", "google.ws", "googleacquisitionmigration.com", "googleadservices.com",
+		"googleanalytics.com", "googleapis.cn", "googleapis.com", "googleapps.com", "googlearth.com", "googleblog.com", "googlebot.com",
+		"googlecapital.com", "googlecert.net", "googlecnapps.cn", "googlecode.com", "googlecommerce.com", "googlecompare.co.uk", "googledanmark.com",
+		"googledomains.com", "googledrive.com", "googlee.com", "googleearth.com", "googlefiber.net", "googlefinland.com", "googlemail.com",
+		"googlemaps.com", "googlepagecreator.com", "googlephotos.com", "googleplay.com", "googleplus.com", "googlesource.com", "googlestore.com",
+		"googlesverige.com", "googlesyndication.com", "googletagmanager.com", "googletagservices.com", "googleusercontent.com", "googleventures.com",
+		"googlr.com", "goolge.com", "gooogle.com", "gridaware.app", "gsrc.io", "gstatic.cn", "gstatic.com", "gstaticadssl.l.google.com", "gstaticcnapps.cn",
+		"gsuite.com", "gtm.oasisfeng.com", "gv.com", "gvt0.com", "gvt1.com", "gvt2.com", "gvt3.com", "gvt5.com", "gvt6.com", "gvt7.com", "gvt9.com",
+		"hdrplusdata.org", "hindiweb.com", "howtogetmo.co.uk", "html5rocks.com", "hwgo.com", "iamremarkable.org", "igoogle.com", "imasdk.googleapis.com",
+		"impermium.com", "j2objc.org", "jibemobile.com", "keyhole.com", "keytransparency.com", "keytransparency.foo", "keytransparency.org",
+		"lanternal.com", "like.com", "madewithcode.com", "material.io", "mdialog.com", "meet.new", "mfg-inspector.com", "mobileview.page", "moodstocks.com",
+		"near.by", "nest.com", "nomulus.foo", "oauthz.com", "ocsp.pki.goog", "on.here", "on2.com", "onefifteen.net", "onefifteen.org", "oneworldmanystories.com",
+		"openthread.io", "openweave.io", "orbitera.com", "page.link", "pagead-googlehosted.l.google.com", "pagespeedmobilizer.com", "pageview.mobi",
+		"panoramio.com", "partylikeits1986.org", "paxlicense.org", "picasa.com", "picasaweb.com", "picasaweb.net", "picasaweb.org", "picnik.com",
+		"pittpatt.com", "pixate.com", "pki-goog.l.google.com", "postini.com", "privacysandbox.com", "projectara.com", "projectbaseline.com", "publishproxy.com",
+		"questvisual.com", "quickoffice.com", "quiksee.com", "recaptcha.net", "redirector.gvt1.com", "regioninfo-pa.googleapis.com", "revolv.com",
+		"ridepenguin.com", "run.app", "safebrowsing-cache.google.com", "safebrowsing.googleapis.com", "savethedate.foo", "saynow.com",
+		"schemer.com", "screenwisetrends.com", "screenwisetrendspanel.com", "settings.crashlytics.com", "snapseed.com", "solveforx.com",
+		"ssl-google-analytics.l.google.com", "ssl.gstatic.com", "stadia.dev", "stcroixmosquito.com", "stcroixmosquitoproject.com", "studywatchbyverily.com",
+		"studywatchbyverily.org", "stxmosquito.com", "stxmosquitoproject.com", "stxmosquitoproject.net", "stxmosquitoproject.org", "synergyse.com",
+		"tensorflow.org", "tfhub.dev", "thecleversense.com", "thegooglestore.com", "thinkquarterly.co.uk", "thinkquarterly.com", "thinkwithgoogle.com",
+		"tiltbrush.com", "toolbarqueries.google.com", "tools.google.com", "tools.l.google.com", "translate.googleapis.com", "txcloud.net",
+		"txvia.com", "unfiltered.news", "update.googleapis.com", "useplannr.com", "usvimosquito.com", "usvimosquitoproject.com", "velostrata.com",
+		"verily.com", "verilylifesciences.com", "verilystudyhub.com", "verilystudywatch.com", "verilystudywatch.org", "wallet.com", "waymo.com",
+		"waze.com", "web.app", "web.dev", "webappfieldguide.com", "webmproject.org", "webpkgcache.com", "webrtc.org", "weltweitwachsen.de",
+		"whatbrowser.org", "widevine.com", "withgoogle.com", "womenwill.com", "womenwill.com.br", "womenwill.id", "womenwill.in", "womenwill.mx",
+		"www-googletagmanager.l.google.com", "www.gstatic.com", "www.recaptcha.net", "x.company", "x.team", "xn--9kr7l.com", "xn--9trs65b.com",
+		"xn--flw351e.com", "xn--ggle-55da.com", "xn--gogl-0nd52e.com", "xn--gogl-1nd42e.com", "xn--ngstr-lra8j.com", "xplr.co", "zukunftswerkstatt.de",
+	}
+
+	domains := ExtractFromBytes([]byte(list))
+	sort.Strings(domains)
+	sort.Strings(golden)
+	assert.Equal(t, domains, golden)
+}
+
+func TestExtractB64(t *testing.T) {
+	// https://github.com/gfwlist/gfwlist/blob/master/gfwlist.txt
 	b64Data := `
 W0F1dG9Qcm94eSAwLjIuOV0KISBDaGVja3N1bTogaG56OUp6ZHdySFRtWDBSdFlI
 Y0R5QQohIEV4cGlyZXM6IDZoCiEgVGl0bGU6IEdGV0xpc3Q0TEwKISBHRldMaXN0

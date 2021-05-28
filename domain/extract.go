@@ -30,6 +30,8 @@ func ExtractFromBytes(data []byte) (domains []string) {
 		s := strings.TrimSpace(scanner.Text())
 
 		if s == "" ||
+			strings.HasPrefix(s, "#") ||
+			strings.HasPrefix(s, "include:") ||
 			strings.HasPrefix(s, "[") ||
 			strings.HasPrefix(s, "!") ||
 			strings.HasPrefix(s, "||!") ||
@@ -37,6 +39,15 @@ func ExtractFromBytes(data []byte) (domains []string) {
 			continue
 		}
 
+		if strings.HasPrefix(s, "full:") {
+			s = strings.TrimSpace(s[5:])
+		}
+		if strings.HasSuffix(s, "@cn") {
+			s = strings.TrimSpace(s[:strings.Index(s, "@cn")])
+		}
+		if strings.Contains(s, "#") {
+			s = strings.TrimSpace(s[:strings.Index(s, "#")])
+		}
 		if unURL, err := url.QueryUnescape(s); err == nil {
 			s = unURL
 		}
