@@ -13,10 +13,10 @@ const RegxIPv4 = `(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1
 const RegxIPv6 = `([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4})`
 
 var ApiIPv4 = []string{
-	"http://www.net.cn/static/customercare/yourip.asp", "http://ddns.oray.com/checkip", "http://haoip.cn",
-	"http://members.3322.org/dyndns/getip", "http://ns1.dnspod.net:6666", "http://v4.myip.la",
+	"http://www.net.cn/static/customercare/yourip.asp", "http://ddns.oray.com/checkip",
+	"http://members.3322.org/dyndns/getip", "http://ns1.dnspod.net:6666",
 	"http://pv.sohu.com/cityjson?ie=utf-8", "http://whois.pconline.com.cn/ipJson.jsp",
-	"http://api-ipv4.ip.sb/ip", "http://ip-api.com/", "http://whatismyip.akamai.com/",
+	"http://ipba.cc", "http://v4.myip.la", "http://api-ipv4.ip.sb/ip", "http://ip-api.com", "http://whatismyip.akamai.com",
 }
 
 var ApiIPv6 = []string{
