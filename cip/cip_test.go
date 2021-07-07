@@ -1,7 +1,6 @@
 package cip
 
 import (
-	"log"
 	"regexp"
 	"testing"
 
@@ -10,13 +9,13 @@ import (
 
 func TestGetIPv4(t *testing.T) {
 	ip := MyIPv4()
-	log.Println(ip)
+	// log.Println(ip)
 	assert.True(t, regexp.MustCompile(RegxIPv4).MatchString(ip) || len(ip) == 0)
 }
 
 func TestGetIPv6(t *testing.T) {
 	ip := MyIPv6()
-	log.Println(ip)
+	// log.Println(ip)
 	assert.True(t, regexp.MustCompile(RegxIPv6).MatchString(ip) || len(ip) == 0)
 }
 
@@ -32,4 +31,14 @@ func TestResloveIPv6(t *testing.T) {
 	assert.Contains(t, []string{"2400:3200::1", "2400:3200:baba::1"}, ResloveIPv6("dns.alidns.com"))
 
 	assert.True(t, regexp.MustCompile(RegxIPv6).MatchString(ResloveIPv6("www.qq.com")))
+}
+
+func TestIPsOfASN(t *testing.T) {
+	assert.Greater(t, len(IPsOfASN(ASN_TENCENT_CN)), 100)
+	assert.Greater(t, len(IPsOfASN(ASN_ALIBABA_CN)), 100)
+	assert.Greater(t, len(IPsOfASN(ASN_HWCLOUDS)), 100)
+	assert.Greater(t, len(IPsOfASN(ASN_HINET)), 100)
+	assert.Greater(t, len(IPsOfASN(ASN_NEWTT)), 100)
+	assert.Greater(t, len(IPsOfASN(ASN_HKBN)), 100)
+	assert.Greater(t, len(IPsOfASN(ASN_UHGL)), 100)
 }
