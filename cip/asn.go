@@ -32,7 +32,7 @@ func IPsOfASN(id int) (ips []string) {
 
 	regx := regexp.MustCompile(RegxIPv4)
 	doc.Find("code").Each(func(i int, s *goquery.Selection) {
-		text := s.Text()
+		text := strings.TrimSpace(s.Text())
 		if regx.MatchString(strings.Split(text, `/`)[0]) {
 			ips = append(ips, text)
 		}
