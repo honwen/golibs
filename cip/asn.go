@@ -21,6 +21,7 @@ const (
 	ASN_NEWTT      = 9381
 	ASN_HKBN       = 9269
 	ASN_UHGL       = 135377
+	ASN_MICROSOFT  = 8075
 )
 
 func IPsOfASN(id int) (ips []string) {
