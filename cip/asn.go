@@ -10,11 +10,15 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/tidwall/pretty"
 )
 
 var apis = []string{
-	`http://ip.bczs.net/AS`,
-	`https://api.hackertarget.com/aslookup/?q=AS`,
+	// `http://ip.bczs.net/AS%d`,
+	// `https://api.hackertarget.com/aslookup/?q=AS%d`,
+	// `https://www.whatismyip.com/asn/%d`,
+	// `https://bgpview.io/asn/%d`,
+	`https://api.bgpview.io/asn/%d/prefixes`,
 }
 
 const (
@@ -27,12 +31,24 @@ const (
 	ASN_UHGL       = 135377
 	ASN_MICROSOFT  = 8075
 	ASN_BCPL_SG    = 64050
+	HDTIDCCLOUD    = 136038
 )
 
 func scanCIDR(content string) (ips []string) {
 	regx := regexp.MustCompile(RegxIPv4)
+	if strings.Contains(content, "<html") && strings.Contains(content, "<td") {
+		doc, err := goquery.NewDocumentFromReader(bytes.NewReader([]byte(content)))
+		if err != nil {
+			log.Fatal(err)
+		}
 
-	if strings.Contains(content, "<html") && strings.Contains(content, "<code") {
+		doc.Find("td").Each(func(i int, s *goquery.Selection) {
+			text := strings.TrimSpace(s.Text())
+			if regx.MatchString(strings.Split(text, `/`)[0]) {
+				ips = append(ips, text)
+			}
+		})
+	} else if strings.Contains(content, "<html") && strings.Contains(content, "<code") {
 		doc, err := goquery.NewDocumentFromReader(bytes.NewReader([]byte(content)))
 		if err != nil {
 			log.Fatal(err)
@@ -45,6 +61,9 @@ func scanCIDR(content string) (ips []string) {
 			}
 		})
 	} else {
+		if _content := pretty.Pretty([]byte(content)); len(_content) > 0 {
+			content = string(_content)
+		}
 		sc := bufio.NewScanner(strings.NewReader(content))
 		for sc.Scan() {
 			text := sc.Text()
@@ -63,7 +82,7 @@ func IPsOfASN(id int) (ips []string) {
 	)
 	for _, api := range apis {
 		go func(api string) {
-			body := wGet(api+fmt.Sprint(id), 10*time.Second)
+			body := wGet(fmt.Sprintf(api, id), 10*time.Second)
 			cchan <- scanCIDR(body)
 		}(api)
 	}
