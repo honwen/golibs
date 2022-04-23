@@ -21,12 +21,6 @@ var ApiIPv6 = []string{
 	"http://ip6only.me/api/", "http://v6.ipv6-test.com/api/myip.php", "https://v6.ident.me",
 }
 
-var curlVer = []string{
-	"7.76.1", "7.76.0", "7.75.0", "7.74.0", "7.73.0", "7.72.0", "7.71.1", "7.71.0", "7.70.0",
-	"7.69.1", "7.69.0", "7.68.0", "7.67.0", "7.66.0", "7.65.3", "7.65.2", "7.65.1", "7.65.0",
-	"7.64.1", "7.64.0", "7.63.0", "7.62.0", "7.61.1", "7.61.0", "7.60.0", "7.59.0", "7.58.0",
-}
-
 func MyIPv4() (ip string) {
 	regx := regexp.MustCompile(RegxIPv4)
 	return FastWGetWithVailder(ApiIPv4, func(s string) string {
