@@ -4,7 +4,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/ysmood/got"
 )
 
 func TestExtractList(t *testing.T) {
@@ -664,7 +664,7 @@ full:www.gstatic.com @cn
 	domains := ExtractFromBytes([]byte(list))
 	sort.Strings(domains)
 	sort.Strings(golden)
-	assert.Equal(t, domains, golden)
+	got.T(t).Eq(domains, golden)
 }
 
 func TestExtractB64(t *testing.T) {
@@ -4286,5 +4286,5 @@ LS0tLS0tCg==
 	domains := ExtractFromB64(b64Data)
 	sort.Strings(domains)
 	sort.Strings(golden)
-	assert.Equal(t, domains, golden)
+	got.T(t).Eq(domains, golden)
 }
