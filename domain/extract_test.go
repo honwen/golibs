@@ -7,6 +7,103 @@ import (
 	"github.com/ysmood/got"
 )
 
+func TestExtractTxt(t *testing.T) {
+	// https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt
+	list := `payload:
+  - '+.265.com'
+  - '+.2mdn-cn.net'
+  - '+.2mdn.net'
+  - '+.admob-cn.com'
+  - '+.adservice.google.com'
+  - '+.app-measurement-cn.com'
+  - '+.app-measurement.com'
+  - '+.beacons.gcp.gvt2.com'
+  - '+.beacons.gvt2.com'
+  - '+.beacons2.gvt2.com'
+  - '+.beacons3.gvt2.com'
+  - '+.c.admob.com'
+  - '+.c.android.clients.google.com'
+  - '+.cache.pack.google.com'
+  - '+.checkin.gstatic.com'
+  - '+.clickserve.dartsearch.net'
+  - '+.clientservices.googleapis.com'
+  - '+.connectivitycheck.gstatic.com'
+  - '+.corp.google.com'
+  - '+.crl.pki.goog'
+  - '+.csi.gstatic.com'
+  - '+.dartsearch-cn.net'
+  - '+.dl.google.com'
+  - '+.dl.l.google.com'
+  - '+.doubleclick-cn.net'
+  - '+.doubleclick.net'
+  - '+.firebase-settings.crashlytics.com'
+  - '+.fonts.googleapis.com'
+  - '+.fonts.gstatic.com'
+  - '+.g1.gstatic.com'
+  - '+.g2.gstatic.com'
+  - '+.google-analytics-cn.com'
+  - '+.google-analytics.com'
+  - '+.googleadservices-cn.com'
+  - '+.googleadservices.com'
+  - '+.googleanalytics.com'
+  - '+.googleapis-cn.com'
+  - '+.googleapps-cn.com'
+  - '+.googleflights-cn.net'
+  - '+.googleoptimize-cn.com'
+  - '+.googleoptimize.com'
+  - '+.googlesyndication-cn.com'
+  - '+.googlesyndication.com'
+  - '+.googletagmanager-cn.com'
+  - '+.googletagmanager.com'
+  - '+.googletagservices-cn.com'
+  - '+.googletagservices.com'
+  - '+.googletraveladservices-cn.com'
+  - '+.googlevads-cn.com'
+  - '+.gstaticadssl.l.google.com'
+  - '+.gtm.oasisfeng.com'
+  - '+.gvt1-cn.com'
+  - '+.gvt2-cn.com'
+  - '+.imasdk.googleapis.com'
+  - '+.ocsp.pki.goog'
+  - '+.pagead-googlehosted.l.google.com'
+  - '+.pki-goog.l.google.com'
+  - '+.recaptcha.net'
+  - '+.redirector.gvt1.com'
+  - '+.regioninfo-pa.googleapis.com'
+  - '+.safebrowsing.googleapis.com'
+  - '+.ssl-google-analytics.l.google.com'
+  - '+.ssl.gstatic.com'
+  - '+.tools.google.com'
+  - '+.tools.l.google.com'
+  - '+.translate.googleapis.com'
+  - '+.translation.googleapis.com'
+  - '+.update.googleapis.com'
+  - '+.www-google-analytics.l.google.com'
+  - '+.www-googletagmanager.l.google.com'
+  - '+.www.gstatic.com'
+	`
+	golden := []string{
+		"googletraveladservices-cn.com", "gstaticadssl.l.google.com", "recaptcha.net", "dartsearch-cn.net", "googleoptimize.com",
+		"googleapps-cn.com", "googletagmanager.com", "doubleclick.net", "google-analytics.com", "beacons.gvt2.com",
+		"connectivitycheck.gstatic.com", "fonts.gstatic.com", "googleflights-cn.net", "googletagservices-cn.com", "googlevads-cn.com",
+		"265.com", "app-measurement.com", "c.android.clients.google.com", "csi.gstatic.com", "googleadservices.com", "pki-goog.l.google.com",
+		"ssl.gstatic.com", "tools.l.google.com", "beacons.gcp.gvt2.com", "beacons3.gvt2.com", "translate.googleapis.com",
+		"translation.googleapis.com", "clickserve.dartsearch.net", "g1.gstatic.com", "ocsp.pki.goog", "adservice.google.com",
+		"cache.pack.google.com", "redirector.gvt1.com", "2mdn.net", "c.admob.com", "googlesyndication.com", "gtm.oasisfeng.com",
+		"dl.l.google.com", "regioninfo-pa.googleapis.com", "ssl-google-analytics.l.google.com", "beacons2.gvt2.com", "crl.pki.goog",
+		"imasdk.googleapis.com", "update.googleapis.com", "googletagmanager-cn.com", "dl.google.com", "firebase-settings.crashlytics.com",
+		"tools.google.com", "www-googletagmanager.l.google.com", "googleoptimize-cn.com", "googletagservices.com", "googlesyndication-cn.com",
+		"gvt1-cn.com", "admob-cn.com", "g2.gstatic.com", "app-measurement-cn.com", "googleapis-cn.com", "safebrowsing.googleapis.com",
+		"www-google-analytics.l.google.com", "www.gstatic.com", "fonts.googleapis.com", "pagead-googlehosted.l.google.com",
+		"googleadservices-cn.com", "googleanalytics.com", "corp.google.com", "doubleclick-cn.net", "clientservices.googleapis.com",
+		"google-analytics-cn.com", "gvt2-cn.com", "2mdn-cn.net", "checkin.gstatic.com",
+	}
+
+	domains := ExtractFromBytes([]byte(list))
+	sort.Strings(domains)
+	sort.Strings(golden)
+	got.T(t).Eq(domains, golden)
+}
 func TestExtractList(t *testing.T) {
 	// https://github.com/v2fly/domain-list-community/blob/master/data/google
 	list := `

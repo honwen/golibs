@@ -39,6 +39,10 @@ func ExtractFromBytes(data []byte) (domains []string) {
 			continue
 		}
 
+		if strings.HasPrefix(strings.TrimSpace(s), `- '+`) {
+			s = s[4:]
+			s = s[:strings.Index(s, "'")]
+		}
 		if strings.HasPrefix(s, "full:") {
 			s = strings.TrimSpace(s[5:])
 		}
