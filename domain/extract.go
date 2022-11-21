@@ -100,7 +100,7 @@ func ExtractFromBytes(data []byte) (domains []string) {
 	}
 	// ---------------------------------gfwlist---------------------------------
 	for _, site := range tmpList.Flatten() {
-		if strings.ContainsAny(site.(string), ".") {
+		if strings.ContainsAny(site.(string), ".") && IsValidHostname(site.(string)) {
 			domains = append(domains, site.(string))
 		}
 	}

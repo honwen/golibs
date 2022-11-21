@@ -1,10 +1,8 @@
 package domain
 
-import "regexp"
+import "github.com/AdguardTeam/golibs/netutil"
 
-const RegxHostname = "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$"
-
-// refer: https://github.com/AdguardTeam/golibs/blob/master/utils/utils.go
+// refer: https://github.com/AdguardTeam/golibs/blob/master/netutil/addr.go#L232
 func IsValidHostname(hostname string) bool {
-	return regexp.MustCompile(RegxHostname).MatchString(hostname)
+	return netutil.ValidateDomainName(hostname) == nil
 }

@@ -351,6 +351,7 @@ google.tt
 google.vg
 google.vu
 google.ws
+disk.yandex.*
 
 # Others
 0emm.com
