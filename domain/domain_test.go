@@ -86,3 +86,10 @@ func TestSorted(t *testing.T) {
 
 	got.T(t).Eq(Sort(list), golden)
 }
+
+func TestSorted2(t *testing.T) {
+	list := []string{"googlers.com", "accounts.googlers.com", "up.gcp.googlers.com"}
+	golden := []string{"googlers.com"}
+
+	got.T(t).Eq(Sort(list), golden)
+}

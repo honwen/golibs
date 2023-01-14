@@ -11,7 +11,7 @@ const RegxIPv6 = `([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-
 
 var ApiIPv4 = []string{
 	"http://www.net.cn/static/customercare/yourip.asp", "http://ddns.oray.com/checkip", "http://speedtest.ecnu.edu.cn/getIP.php",
-	"http://members.3322.org/dyndns/getip", "http://ifconfig.cc", "http://cip.cc",
+	"http://members.3322.org/dyndns/getip", "http://ifconfig.cc", "http://cip.cc", "https://v6r.ipip.net",
 	"http://pv.sohu.com/cityjson?ie=utf-8", "http://whois.pconline.com.cn/ipJson.jsp",
 	"http://ipba.cc", "http://v4.myip.la", "https://api.ipify.org", "http://ip-api.com", "http://whatismyip.akamai.com",
 }
