@@ -15,7 +15,10 @@ var UA_OSs = []string{
 
 func wGet(url string, timeout time.Duration) (str string) {
 	request, err := http.NewRequest("GET", url, nil)
-	request.Header.Set("User-Agent", fmt.Sprintf("Mozilla/5.0 (%s)", UA_OSs[rand.Intn(len(UA_OSs))]))
+	request.Header.Set(
+		"User-Agent",
+		fmt.Sprintf("Mozilla/5.0 (%s)", UA_OSs[rand.Intn(len(UA_OSs))]),
+	)
 	if err != nil {
 		return
 	}

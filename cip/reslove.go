@@ -58,7 +58,9 @@ func reslove(domain string, qtype uint16) (ip string) {
 	for i := range mResolvers {
 		go func(resolver *resolvers.Resolver) {
 			addr := "" // SOA
-			resp, err := (*resolver).Lookup(dns.Question{Name: domain, Qtype: qtype, Qclass: dns.ClassINET})
+			resp, err := (*resolver).Lookup(
+				dns.Question{Name: domain, Qtype: qtype, Qclass: dns.ClassINET},
+			)
 			if err == nil && len(resp.Answers) > 0 {
 				for _, it := range resp.Answers {
 					if it.Type == dns.TypeToString[qtype] {

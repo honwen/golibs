@@ -27,7 +27,8 @@ func TestResloveIPv4(t *testing.T) {
 }
 
 func TestResloveIPv6(t *testing.T) {
-	got.T(t).Has([]string{"2001:4860:4860::8844", "2001:4860:4860::8888"}, ResloveIPv6("dns.google"))
+	got.T(t).
+		Has([]string{"2001:4860:4860::8844", "2001:4860:4860::8888"}, ResloveIPv6("dns.google"))
 	got.T(t).Has([]string{"2400:3200::1", "2400:3200:baba::1"}, ResloveIPv6("dns.alidns.com"))
 
 	got.T(t).True(regexp.MustCompile(RegxIPv6).MatchString(ResloveIPv6("www.qq.com")))
