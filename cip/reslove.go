@@ -16,6 +16,7 @@ func init() {
 		"tls://223.5.5.5:853", "tls://223.6.6.6:853", "https://223.5.5.5/dns-query", "https://223.6.6.6/dns-query",
 		"tls://1.12.12.12:853", "https://120.53.53.53/dns-query",
 		// "tls://1.12.12.12:853", "tls://120.53.53.53:853", "https://1.12.12.12/dns-query", "https://120.53.53.53/dns-query",
+		"https://1.15.50.48/verse", "https://106.52.218.142/verse",
 	}
 	var opts = resolvers.Options{
 		Timeout: 2000 * time.Millisecond,
