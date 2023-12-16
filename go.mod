@@ -1,16 +1,18 @@
 module github.com/honwen/golibs
 
-go 1.20
+go 1.21
+
+toolchain go1.21.4
 
 require (
-	github.com/AdguardTeam/golibs v0.16.0
+	github.com/AdguardTeam/golibs v0.18.1
 	github.com/PuerkitoBio/goquery v1.8.1
-	github.com/Workiva/go-datastructures v1.1.0
-	github.com/miekg/dns v1.1.55
-	github.com/mr-karan/doggo v0.5.6
+	github.com/Workiva/go-datastructures v1.1.1
+	github.com/miekg/dns v1.1.57
+	github.com/mr-karan/doggo v0.5.7
 	github.com/tidwall/pretty v1.2.1
-	github.com/ysmood/got v0.35.0
-	golang.org/x/net v0.15.0
+	github.com/ysmood/got v0.38.2
+	golang.org/x/net v0.19.0
 )
 
 require (
@@ -24,15 +26,13 @@ require (
 	github.com/google/pprof v0.0.0-20221219190121-3cb0bae90811 // indirect
 	github.com/onsi/ginkgo/v2 v2.9.5 // indirect
 	github.com/quic-go/qtls-go1-20 v0.3.3 // indirect
-	github.com/quic-go/quic-go v0.37.0 // indirect
+	github.com/quic-go/quic-go v0.37.4 // indirect
 	github.com/sirupsen/logrus v1.9.0 // indirect
-	github.com/ysmood/gop v0.1.0 // indirect
-	golang.org/x/crypto v0.13.0 // indirect
+	github.com/ysmood/gop v0.2.0 // indirect
+	golang.org/x/crypto v0.16.0 // indirect
 	golang.org/x/exp v0.0.0-20230807204917-050eac23e9de // indirect
-	golang.org/x/mod v0.11.0 // indirect
-	golang.org/x/sys v0.12.0 // indirect
-	golang.org/x/text v0.13.0 // indirect
-	golang.org/x/tools v0.9.1 // indirect
+	golang.org/x/mod v0.12.0 // indirect
+	golang.org/x/sys v0.15.0 // indirect
+	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/tools v0.13.0 // indirect
 )
-
-replace github.com/quic-go/quic-go => github.com/quic-go/quic-go v0.38.1
