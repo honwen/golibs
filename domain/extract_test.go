@@ -104,6 +104,7 @@ func TestExtractTxt(t *testing.T) {
 	sort.Strings(golden)
 	got.T(t).Eq(domains, golden)
 }
+
 func TestExtractList(t *testing.T) {
 	// https://github.com/v2fly/domain-list-community/blob/master/data/google
 	list := `

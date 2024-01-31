@@ -40,6 +40,7 @@ func TestSplitDomain005(t *testing.T) {
 	got.T(t).Eq(rr, "*.b.a")
 	got.T(t).Eq(domain, "example.com")
 }
+
 func TestSplitDomain006(t *testing.T) {
 	rr, domain := SplitDomainToRR("a.example.co.kr")
 
