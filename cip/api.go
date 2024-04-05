@@ -14,7 +14,7 @@ const RegxIPv6 = `([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-
 var ApiIPv4 = []string{
 	"http://www.net.cn/static/customercare/yourip.asp", "http://ddns.oray.com/checkip",
 	"https://test.ustc.edu.cn/backend/getIP.php", "https://wsus.sjtu.edu.cn/speedtest/backend/getIP.php",
-	"https://test.nju.edu.cn/backend/getIP.php", "http://speedtest.zju.edu.cn/getIP.php",
+	"http://ipv4.ddnspod.com", "http://speedtest.zju.edu.cn/getIP.php",
 	// "https://www.lib.whu.edu.cn/speedtest/backend/getIP.php",
 	"http://members.3322.org/dyndns/getip", "https://ip.3322.net", "http://ifconfig.cc", "http://cip.cc", "https://v6r.ipip.net",
 	"http://pv.sohu.com/cityjson?ie=utf-8", "http://whois.pconline.com.cn/ipJson.jsp",
@@ -23,7 +23,9 @@ var ApiIPv4 = []string{
 }
 
 var ApiIPv6 = []string{
-	"https://test.nju.edu.cn/backend/getIP.php", "http://v6.myip.la", "https://api64.ipify.org", "http://speedtest6.ecnu.edu.cn/getIP.php",
+	"http://ipv6.testipv6.cn/ip/", "http://ipv6.ddnspod.com",
+	"http://v6.myip.la", "https://api64.ipify.org",
+	"https://www.lib.whu.edu.cn/speedtest/backend/getIP.php",
 	"http://ip6only.me/api/", "http://v6.ipv6-test.com/api/myip.php", "https://v6.ident.me",
 	"https://www.cloudflare-cn.com/cdn-cgi/trace", "https://www.cloudflare.com/cdn-cgi/trace",
 }
