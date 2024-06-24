@@ -15,12 +15,15 @@ var ApiIPv4 = []string{
 	"http://www.net.cn/static/customercare/yourip.asp", "http://ddns.oray.com/checkip",
 	"https://test.ustc.edu.cn/backend/getIP.php", "https://wsus.sjtu.edu.cn/speedtest/backend/getIP.php",
 	"http://ipv4.ddnspod.com", "http://speedtest.zju.edu.cn/getIP.php",
-	// "https://www.lib.whu.edu.cn/speedtest/backend/getIP.php",
+	"https://www.lib.whu.edu.cn/speedtest/backend/getIP.php",
 	// "https://v6r.ipip.net",
-	"http://members.3322.org/dyndns/getip", "https://ip.3322.net", "http://ifconfig.cc", "http://cip.cc",
-	"http://pv.sohu.com/cityjson?ie=utf-8", "http://whois.pconline.com.cn/ipJson.jsp",
+	"http://members.3322.org/dyndns/getip", "https://ip.3322.net",
+	"http://whois.pconline.com.cn/ipJson.jsp", "http://ifconfig.cc", "http://cip.cc",
 	"http://v4.myip.la", "https://api.ipify.org", "http://ip-api.com/json", "http://whatismyip.akamai.com",
 	"https://www.cloudflare-cn.com/cdn-cgi/trace", "https://www.cloudflare.com/cdn-cgi/trace",
+
+	// refer: https://github.com/honwen/aliyun-ddns-cli/issues/85
+	// "http://pv.sohu.com/cityjson?ie=utf-8",
 }
 
 var ApiIPv6 = []string{
@@ -60,7 +63,7 @@ func FastWGetWithVailder(ipAPI []string, vailder func(string) string) (ip string
 	}
 	for i := 0; i < length; i++ {
 		v := <-cchan
-		if 0 == len(v) {
+		if len(v) == 0 {
 			continue
 		}
 		if ipMap[v]++; ipMap[v] >= length/2 {
@@ -75,7 +78,7 @@ func FastWGetWithVailder(ipAPI []string, vailder func(string) string) (ip string
 	}
 
 	// Use First ipAPI as failsafe
-	if 0 == len(ip) {
+	if len(ip) == 0 {
 		ip = vailder(wGet(ipAPI[0], 5*minTimeout))
 	}
 	return

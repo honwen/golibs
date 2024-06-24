@@ -3,7 +3,7 @@ module github.com/honwen/golibs
 go 1.22.4
 
 require (
-	github.com/AdguardTeam/golibs v0.24.0
+	github.com/AdguardTeam/golibs v0.24.1
 	github.com/PuerkitoBio/goquery v1.9.2
 	github.com/Workiva/go-datastructures v1.1.5
 	github.com/miekg/dns v1.1.61

@@ -1,5 +1,5 @@
-github.com/AdguardTeam/golibs v0.24.0 h1:qAnOq7BQtwSVo7Co9q703/n+nZ2Ap6smkugU9G9MomY=
-github.com/AdguardTeam/golibs v0.24.0/go.mod h1:9/vJcYznW7RlmCT/Qzi8XNZGj+ZbWfHZJmEXKnRpCAU=
+github.com/AdguardTeam/golibs v0.24.1 h1:/ulkfm65wi33p72ybxiOt3lSdP0nr1GggSoaT4sHbns=
+github.com/AdguardTeam/golibs v0.24.1/go.mod h1:9/vJcYznW7RlmCT/Qzi8XNZGj+ZbWfHZJmEXKnRpCAU=
 github.com/PuerkitoBio/goquery v1.9.2 h1:4/wZksC3KgkQw7SQgkKotmKljk0M6V8TUvA8Wb4yPeE=
 github.com/PuerkitoBio/goquery v1.9.2/go.mod h1:GHPCaP0ODyyxqcNoFGYlAprUFH81NuRPd0GX3Zu2Mvk=
 github.com/Workiva/go-datastructures v1.1.5 h1:5YfhQ4ry7bZc2Mc7R0YZyYwpf5c6t1cEFvdAhd6Mkf4=
