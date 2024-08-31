@@ -2,12 +2,13 @@ package cip
 
 import (
 	"context"
+	"io"
+	"log/slog"
 	"strings"
 	"time"
 
 	"github.com/miekg/dns"
 	"github.com/mr-karan/doggo/pkg/resolvers"
-	"github.com/mr-karan/doggo/pkg/utils"
 )
 
 var mResolvers = []resolvers.Resolver{}
@@ -21,7 +22,7 @@ func init() {
 	}
 	opts := resolvers.Options{
 		Timeout: 2000 * time.Millisecond,
-		Logger:  utils.InitLogger(false),
+		Logger:  slog.New(slog.NewJSONHandler(io.Discard, nil)),
 	}
 	dotOpts := resolvers.ClassicResolverOpts{
 		UseTLS: true,
