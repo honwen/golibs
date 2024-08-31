@@ -1,6 +1,7 @@
 package cip
 
 import (
+	"context"
 	"strings"
 	"time"
 
@@ -14,13 +15,13 @@ var mResolvers = []resolvers.Resolver{}
 func init() {
 	upstreams := []string{
 		"tls://223.5.5.5:853", "tls://223.6.6.6:853", "https://223.5.5.5/dns-query", "https://223.6.6.6/dns-query",
-		"tls://1.12.12.12:853", "https://120.53.53.53/dns-query",
-		// "tls://1.12.12.12:853", "tls://120.53.53.53:853", "https://1.12.12.12/dns-query", "https://120.53.53.53/dns-query",
+		// "tls://1.12.12.12:853", "https://120.53.53.53/dns-query",
+		"tls://1.12.12.12:853", "tls://120.53.53.53:853", "https://1.12.12.12/dns-query", "https://120.53.53.53/dns-query",
 		"https://1.15.50.48/verse", "https://106.52.218.142/verse",
 	}
 	opts := resolvers.Options{
 		Timeout: 2000 * time.Millisecond,
-		Logger:  utils.InitLogger(),
+		Logger:  utils.InitLogger(false),
 	}
 	dotOpts := resolvers.ClassicResolverOpts{
 		UseTLS: true,
@@ -55,15 +56,16 @@ func reslove(domain string, qtype uint16) (ip string) {
 		cchan    = make(chan string, len(mResolvers))
 		maxCount = -1
 	)
+	ctx := context.Background()
+
+	qFlags := resolvers.QueryFlags{}
 
 	for i := range mResolvers {
 		go func(resolver *resolvers.Resolver) {
 			addr := "" // SOA
-			resp, err := (*resolver).Lookup(
-				dns.Question{Name: domain, Qtype: qtype, Qclass: dns.ClassINET},
-			)
-			if err == nil && len(resp.Answers) > 0 {
-				for _, it := range resp.Answers {
+			resp, err := (*resolver).Lookup(ctx, []dns.Question{{Name: domain, Qtype: qtype, Qclass: dns.ClassINET}}, qFlags)
+			if err == nil && len(resp) > 0 && len(resp[0].Answers) > 0 {
+				for _, it := range resp[0].Answers {
 					if it.Type == dns.TypeToString[qtype] {
 						addr = it.Address
 						break
