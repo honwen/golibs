@@ -15,7 +15,7 @@ var ApiIPv4 = []string{
 	"http://www.net.cn/static/customercare/yourip.asp", "http://ddns.oray.com/checkip",
 	"https://test.ustc.edu.cn/backend/getIP.php", "https://wsus.sjtu.edu.cn/speedtest/backend/getIP.php",
 	"http://ipv4.ddnspod.com", "http://speedtest.zju.edu.cn/getIP.php",
-	"https://www.lib.whu.edu.cn/speedtest/backend/getIP.php",
+	"https://www.lib.whu.edu.cn/speedtest/backend/getIP.php", "https://ipv4.ddnsip.cn/",
 	// "https://v6r.ipip.net",
 	"http://members.3322.org/dyndns/getip", "https://ip.3322.net",
 	"http://whois.pconline.com.cn/ipJson.jsp", "http://ifconfig.cc", "http://cip.cc",
@@ -30,7 +30,7 @@ var ApiIPv6 = []string{
 	"http://ipv6.testipv6.cn/ip/", "http://ipv6.ddnspod.com",
 	"http://v6.myip.la", "https://api64.ipify.org",
 	"https://test6.ustc.edu.cn/backend/getIP.php",
-	"https://www.lib.whu.edu.cn/speedtest/backend/getIP.php",
+	"https://www.lib.whu.edu.cn/speedtest/backend/getIP.php", "https://ipv6.ddnsip.cn/",
 	"http://ip6only.me/api/", "http://v6.ipv6-test.com/api/myip.php", "https://v6.ident.me",
 	"https://www.cloudflare-cn.com/cdn-cgi/trace", "https://www.cloudflare.com/cdn-cgi/trace",
 }
