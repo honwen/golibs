@@ -12,6 +12,7 @@ const RegxIPv4 = `(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1
 const RegxIPv6 = `([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4})`
 
 var ApiIPv4 = []string{
+	"https://itango.tencent.com/out/itango/myip",
 	"http://www.net.cn/static/customercare/yourip.asp", "http://ddns.oray.com/checkip",
 	"https://test.ustc.edu.cn/backend/getIP.php", "https://wsus.sjtu.edu.cn/speedtest/backend/getIP.php",
 	"http://ipv4.ddnspod.com", "http://speedtest.zju.edu.cn/getIP.php",
