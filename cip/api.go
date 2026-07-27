@@ -12,28 +12,43 @@ const RegxIPv4 = `(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1
 const RegxIPv6 = `([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4})`
 
 var ApiIPv4 = []string{
-	"https://itango.tencent.com/out/itango/myip",
-	"http://www.net.cn/static/customercare/yourip.asp", "http://ddns.oray.com/checkip",
-	"https://test.ustc.edu.cn/backend/getIP.php", "https://wsus.sjtu.edu.cn/speedtest/backend/getIP.php",
-	"http://ipv4.ddnspod.com", "http://speedtest.zju.edu.cn/getIP.php",
-	"https://www.lib.whu.edu.cn/speedtest/backend/getIP.php", "https://ipv4.ddnsip.cn/",
-	// "https://v6r.ipip.net",
-	"http://members.3322.org/dyndns/getip", "https://ip.3322.net",
-	"http://whois.pconline.com.cn/ipJson.jsp", "http://ifconfig.cc", "http://cip.cc",
-	"http://v4.myip.la", "https://api.ipify.org", "http://ip-api.com/json", "http://whatismyip.akamai.com",
-	"https://www.cloudflare-cn.com/cdn-cgi/trace", "https://www.cloudflare.com/cdn-cgi/trace",
+	// cn
+	"https://itango.tencent.com/out/itango/myip",       // verified 2026-07-27
+	"https://ip9.com.cn/get",                           // verified 2026-07-27
+	"http://www.net.cn/static/customercare/yourip.asp", // verified 2026-07-27
+	"http://ddns.oray.com/checkip",                     // verified 2026-07-27
+	"https://ifcfg.cn",                                 // verified 2026-07-27
+	"http://ipv4.ddnspod.com",                          // verified 2026-07-27
+	"https://ipv4.ddnsip.cn/",                          // verified 2026-07-27
+	"http://members.3322.org/dyndns/getip",             // verified 2026-07-27
+	"https://ip.3322.net",                              // verified 2026-07-27
+
+	// global
+	"http://ifconfig.cc",                          // verified 2026-07-27
+	"http://cip.cc",                               // verified 2026-07-27
+	"http://v4.myip.la",                           // verified 2026-07-27
+	"http://ip-api.com/json",                      // verified 2026-07-27
+	"http://whatismyip.akamai.com",                // verified 2026-07-27
+	"https://www.cloudflare-cn.com/cdn-cgi/trace", // verified 2026-07-27
+	"https://www.cloudflare.com/cdn-cgi/trace",    // verified 2026-07-27
 
 	// refer: https://github.com/honwen/aliyun-ddns-cli/issues/85
 	// "http://pv.sohu.com/cityjson?ie=utf-8",
+	// "https://v6r.ipip.net",
 }
 
 var ApiIPv6 = []string{
-	"http://ipv6.testipv6.cn/ip/", "http://ipv6.ddnspod.com",
-	"http://v6.myip.la", "https://api64.ipify.org",
-	"https://test6.ustc.edu.cn/backend/getIP.php",
-	"https://www.lib.whu.edu.cn/speedtest/backend/getIP.php", "https://ipv6.ddnsip.cn/",
-	"http://ip6only.me/api/", "http://v6.ipv6-test.com/api/myip.php", "https://v6.ident.me",
-	"https://www.cloudflare-cn.com/cdn-cgi/trace", "https://www.cloudflare.com/cdn-cgi/trace",
+	// cn
+	"http://ipv6.ddnspod.com", // verified 2026-07-27
+	"https://ipv6.ddnsip.cn/", // verified 2026-07-27
+
+	// global
+	"http://v6.myip.la",                           // verified 2026-07-27
+	"https://api64.ipify.org",                     // verified 2026-07-27
+	"http://ip6only.me/api/",                      // verified 2026-07-27
+	"https://v6.ident.me",                         // verified 2026-07-27
+	"https://www.cloudflare-cn.com/cdn-cgi/trace", // verified 2026-07-27
+	"https://www.cloudflare.com/cdn-cgi/trace",    // verified 2026-07-27
 }
 
 func MyIPv4() (ip string) {
